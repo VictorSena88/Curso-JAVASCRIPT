@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simples</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            /* Aplica o box-sizing para todos os elementos */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: linear-gradient(to bottom right, red, yellow);
+            margin: 0;
+            box-sizing: border-box;
+            /* Garante que todos os elementos na página sigam a mesma regra */
+        }
+
+        .calculadora {
+            background-color: #fff;
+            padding: 30px;
+            padding-right: 15px;
+            /* Adiciona espaçamento à direita */
+            border-radius: 10px;
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .calculadora input,
+        .calculadora select,
+        .calculadora button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            /* Espaçamento uniforme entre os elementos */
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .calculadora button {
+            background-color: #f39c12;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .calculadora button:hover {
+            background-color: #e67e22;
+        }
+
+        .resultado {
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculadora">
+        <h2>Calculadora Simples</h2>
+        <input  id="numero1" placeholder="Digite o primeiro número">
+        <input  id="numero2" placeholder="Digite o segundo número">
+        <select id="operacao">
+            <option value="soma">Soma</option>
+            <option value="subtracao">Subtração</option>
+            <option value="multiplicacao">Multiplicação</option>
+            <option value="divisao">Divisão</option>
+        </select>
+        <button onclick="calcular()">Calcular</button>
+        <p class="res
