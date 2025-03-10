@@ -16,6 +16,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: auto;
             height: 100vh;
             background-image: linear-gradient(to bottom right, red, yellow);
             margin: 0;
@@ -44,10 +45,11 @@
         .calculadora select,
         .calculadora button {
             width: 100%;
-            padding: 10px;
+            padding: 15px;
             margin: 10px 0;
             /* Espaçamento uniforme entre os elementos */
             font-size: 18px;
+            border: 1px solid #ccc;
             border-radius: 5px;
         }
 
@@ -76,8 +78,8 @@
 
     <div class="calculadora">
         <h2>Calculadora Simples</h2>
-        <input  id="numero1" placeholder="Digite o primeiro número">
-        <input  id="numero2" placeholder="Digite o segundo número">
+        <input id="numero1" placeholder="Digite o primeiro número">
+        <input id="numero2" placeholder="Digite o segundo número">
         <select id="operacao">
             <option value="soma">Soma</option>
             <option value="subtracao">Subtração</option>
@@ -85,4 +87,56 @@
             <option value="divisao">Divisão</option>
         </select>
         <button onclick="calcular()">Calcular</button>
-        <p class="res
+        <p class="resultado" id="resultado"></p>
+    </div>
+
+    <script>
+        function calcular() {
+            var numero1 = parseFloat(document.getElementById('numero1').value);
+            var numero2 = parseFloat(document.getElementById('numero2').value);
+            var operacao = document.getElementById('operacao').value;
+            var resultado = 0;
+
+            // Verificar se os números são válidos
+            if (isNaN(numero1) || isNaN(numero2)) {
+                document.getElementById('resultado').innerHTML = 'Por favor, insira números válidos!';
+                return;
+            }
+
+            // Verificar se a operação foi selecionada
+            if (!operacao) {
+                document.getElementById('resultado').innerHTML = 'Por favor, selecione uma operação!';
+                return;
+            }
+
+            // Realizando o cálculo de acordo com a operação selecionada
+            switch (operacao) {
+                case 'soma':
+                    resultado = numero1 + numero2;
+                    break;
+                case 'subtracao':
+                    resultado = numero1 - numero2;
+                    break;
+                case 'multiplicacao':
+                    resultado = numero1 * numero2;
+                    break;
+                case 'divisao':
+                    if (numero2 === 0) {
+                        document.getElementById('resultado').innerHTML = 'Erro: Divisão por zero!';
+                        return;
+                    }
+                    resultado = numero1 / numero2;
+                    break;
+                default:
+                    document.getElementById('resultado').innerHTML = 'Operação não reconhecida!';
+                    return;
+            }
+
+            // Exibe o resultado
+            document.getElementById('resultado').innerHTML = 'Resultado: ' + resultado;
+        }
+    </script>
+
+</body>
+
+</html>
