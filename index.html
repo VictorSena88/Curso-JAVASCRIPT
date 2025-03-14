@@ -14,21 +14,44 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: auto;
+            padding: 20px;
             height: 100vh;
-            background-image: linear-gradient(to bottom right, red, yellow);
             margin: 0;
-            box-sizing: border-box;
-            /* Garante que todos os elementos na página sigam a mesma regra */
+            background: linear-gradient(to bottom right, red, yellow);
+        }
+
+        .navbar {
+            width: 100%;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: linear-gradient(to bottom right, red, yellow);
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color:linear-gradient(to bottom right, red, yellow);
+            color:black;
         }
 
         .calculadora {
-            background-color: #fff;
+            margin-top: 80px;
+            /* Para não sobrepor o menu */
+            background-image: url('FUNDO.jpg');
             padding: 30px;
             padding-right: 15px;
-            /* Adiciona espaçamento à direita */
             border-radius: 10px;
             width: 100%;
             max-width: 350px;
@@ -38,7 +61,8 @@
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
+            color: white;
+            margin-bottom: 15px;
         }
 
         .calculadora input,
@@ -47,7 +71,6 @@
             width: 100%;
             padding: 15px;
             margin: 10px 0;
-            /* Espaçamento uniforme entre os elementos */
             font-size: 18px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -67,17 +90,22 @@
 
         .resultado {
             font-weight: bold;
+            color: white;
             font-size: 18px;
             text-align: center;
             margin-top: 20px;
         }
+    
     </style>
 </head>
 
 <body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+    </div>
 
     <div class="calculadora">
-        <h2>Calculadora Simples</h2>
+        <h2>CALCULADORA</h2>
         <input id="numero1" placeholder="Digite o primeiro número">
         <input id="numero2" placeholder="Digite o segundo número">
         <select id="operacao">
@@ -91,11 +119,16 @@
     </div>
 
     <script>
+
+        
         function calcular() {
             var numero1 = parseFloat(document.getElementById('numero1').value);
             var numero2 = parseFloat(document.getElementById('numero2').value);
             var operacao = document.getElementById('operacao').value;
             var resultado = 0;
+
+            // Limpar a mensagem de resultado ao começar o cálculo
+            document.getElementById('resultado').innerHTML = '';
 
             // Verificar se os números são válidos
             if (isNaN(numero1) || isNaN(numero2)) {
@@ -136,7 +169,6 @@
             document.getElementById('resultado').innerHTML = 'Resultado: ' + resultado;
         }
     </script>
-
 </body>
 
 </html>
